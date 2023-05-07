@@ -48,15 +48,15 @@ function html(element) {
 	const output = `
 	<h2 class='amount'>${element.name}</h2>
 
-	<p class='amount-text'><b class='amount'>Alta $</b>${element.high}</p>
+	<p class='amount-text'><b class='amount'>Alta $</b>${Number(element.high).toFixed(2)}</p>
 
-	<p class='amount-text'><b class='amount'>Baixa $</b>${element.low}</p>
+	<p class='amount-text'><b class='amount'>Baixa $</b>${Number(element.low).toFixed(2)}</p>
 	
-	<p class='amount-text'><b class='amount'>bid $</b>${element.bid}</p>
+	<p class='amount-text'><b class='amount'>bid $</b>${Number(element.bid).toFixed(2)}</p>
 	
-	<p class='amount-text'><b class='amount'>ask $</b>${element.ask}</p>
+	<p class='amount-text'><b class='amount'>ask $</b>${Number(element.ask).toFixed(2)}</p>
 
-	<span class='amount-text'><b class='amount'>DATA: </b>${element.create_date}</span>
+	<span class='amount-text'><b class='amount'>Data: </b>${element.create_date}</span>
 
 	`
 	document.getElementById('value-da-api').innerHTML = output;
