@@ -6,19 +6,26 @@
 
 window.addEventListener('change', getApiCotacao)
 getApiCotacao()
+
 async function getApiCotacao() {
-	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD');
+	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,ARS-BRL,BRL-ARS');
 	const res = await req.json();
 
 	console.log(res)
 	
+	const element = res.USDBRL;	
+	html(element)
+
+	selectMoeda(res)
+}
+
+function selectMoeda(res) {
+	
 	const idSelect = document.getElementById('id-select');
 
 	const isOption = idSelect.options[idSelect.selectedIndex];
-	let isOptionText = Number(isOption.value); 
+	const isOptionText = Number(isOption.value); 
 	console.log(isOptionText)
-	const element = res.USDBRL;	
-	html(element)
 
 	if (isOptionText === 0) {
 		html(res.USDBRL)
@@ -30,8 +37,11 @@ async function getApiCotacao() {
 		html(res.USDJPY)
 	}else if(isOptionText === 4) {
 		html(res.BTCUSD)
+	}else if(isOptionText === 5) {
+		html(res.ARSBRL)
+	}else if(isOptionText === 6) {
+		html(res.BRLARS)
 	}
-	
 }
 
 function html(element) {
@@ -41,7 +51,7 @@ function html(element) {
 	<p class='amount-text'><b class='amount'>Alta $</b>${element.high}</p>
 
 	<p class='amount-text'><b class='amount'>Baixa $</b>${element.low}</p>
-
+	
 	<p class='amount-text'><b class='amount'>bid $</b>${element.bid}</p>
 	
 	<p class='amount-text'><b class='amount'>ask $</b>${element.ask}</p>
@@ -53,13 +63,12 @@ function html(element) {
 }
 
 function addOptions() {
-	const simbolos = ['USDBRL','EURBRL','BTCBRL','USDJPY','BTCUSD'];
+	const simbolos = ['USDBRL','EURBRL','BTCBRL','USDJPY','BTCUSD','ARSBRL','BRLARS'];
 
 	simbolos.map((simbolo,index) => {createOptions(simbolo,index)})
 }
 addOptions()
 
-let gerar = 0;
 function createOptions(textOption,valueOption) {
 	const idSelect = document.getElementById('id-select');
 
