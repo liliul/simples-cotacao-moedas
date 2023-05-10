@@ -4,43 +4,35 @@ const input2 = document.getElementById('input-2');
 
 const buttonCoverter = document.getElementById('button-coverter');
 
-// input1.addEventListener('change', () => {
-// 	document.getElementById('input-2')
-// })
-//input1.addEventListener('change', () => {document.getElementById('input-2').setAttribute('value', input1.value)})
+
+// input1.addEventListener('change', () => {document.getElementById('input-2').setAttribute('value', input1.value)})
 
 
 // console.log(varInput1)
 const selected2 = document.getElementById('selected-converter-2');
-selected2.addEventListener('click', getApiConverter())
- getApiConverter()
+selected2.addEventListener('change', getApiConverter)
+getApiConverter()
 
 async function getApiConverter() {
-	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,ARS-BRL,BRL-ARS');
+	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-USD,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,ARS-BRL,BRL-ARS,USD-ARS');
 	const res = await req.json();
 
 
 	console.log(res)
-	// let a = res.USDBRL
-	// htmlC(a)
 	selectMoedaC(res)
-	// converter()
 }
 
 function selectMoedaC(res) {
 	
 	const input3 = document.getElementById('selected-converter-2');
-
 	const isOption = input3.options[input3.selectedIndex];
-	console.log('is', isOption)
 	const isOptionText = Number(isOption.value); 
 	console.log(isOptionText)
 
 	if (isOptionText === 0) {
-		console.log('dsasad')
 		htmlC(res.USDBRL)
 	}else if(isOptionText === 1) {
-		htmlC(res.EURBRL)
+		htmlC(res.BRLUSD)
 	}else if(isOptionText === 2) {
 		htmlC(res.BTCBRL)
 	}else if(isOptionText === 3) {
@@ -48,10 +40,15 @@ function selectMoedaC(res) {
 	}else if(isOptionText === 4) {
 		htmlC(res.BTCUSD)
 	}else if(isOptionText === 5) {
-		htmlC(res.USDARS)
+		htmlC(res.EURBRL)
 	}else if(isOptionText === 6) {
+		htmlC(res.USDARS)
+	}else if(isOptionText === 7) {
 		htmlC(res.BRLARS)
+	}else if(isOptionText === 8) {
+		htmlC(res.ARSBRL)
 	}
+
 }
 function htmlC(bid) {
 	document.getElementById('input-2').setAttribute('value', Number(bid.ask).toFixed(2))
@@ -62,7 +59,8 @@ buttonCoverter.addEventListener('click', () => {
 	const varInput2 = input2.valueAsNumber;
 	
 	console.log(converter(varInput1, varInput2))
-	document.querySelector('#res-converter').innerHTML = converter(varInput1, varInput2)
+	document.querySelector('#res-converter').innerText = Number(converter(varInput1, varInput2).toFixed(2))
+	
 })
 function converter(input1, input2) {
 	return input1 * input2
@@ -70,7 +68,7 @@ function converter(input1, input2) {
 
 
 function addOptionsConverter() {
-	const simbolos = ['Dolar','Real','Bitcoin','iene','Euro','Peso-Arg'];
+	const simbolos = ['Dolar Real','Real Dolar','Bitcoin Real','Dolar Iene','Bitcoin Dolar','Euro Real','Dolar Peso-Arg','Real Peso-Arg','Peso-Arg Real'];
 
 	simbolos.map((simbolo,index) => {createOptionsCoverter(simbolo,index)})
 }
