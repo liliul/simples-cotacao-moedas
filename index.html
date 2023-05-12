@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,7 +11,7 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/css/flag-icons.min.css"
     />
-    <script src="./src/api.js" defer></script>
+    <script type="module"  src="./src/api.js" defer></script>
   </head>
   <body>
     <main>
@@ -28,10 +21,19 @@
           <div class="money-wrapper">
 
             <article class="info-moeda" id="value-da-api">
-              
+              <!-- <h1>Escolher a Moeda</h1> -->
             </article>
 
             <div class="dropdown">
+              <select id="id-select" class="selected">                
+                <!-- <option value="">USD</option>
+                <option value="">BRL</option>
+                <option value="">JPY</option>
+                <option value="">EURO</option> -->
+              </select>
+            </div>
+
+            <!-- <div class="dropdown">
               <div class="selected">
                 <span class="fi fi-us fis"></span>
                 USD
@@ -55,7 +57,7 @@
                   GBP
                 </li>
               </ul>
-            </div>
+            </div> -->
           </div>
 
           <!-- <div class="middle">
@@ -93,6 +95,33 @@
           </div> -->
         </div>
       </section>
+
+      <section class="conversor">
+        <div class="money-wrapper">
+          <input type="number" id="input-1"  class="amount" value="1" />
+
+          <!-- <div class="dropdown-converter">
+            <select id="selected-converter-1" class="selected"></select>
+          </div> -->
+        </div>
+        
+        <div class="middle">
+          <button id="button-coverter">
+            <img src="./assets/arrows-exchange.svg" alt="trocar moeda" />
+          </button>
+        </div>
+        
+        <div class="money-wrapper">
+          <input type="number" id="input-2" class="amount" value="1" readonly/>
+
+          <div class="dropdown-converter">
+            <select id="selected-converter-2" class="selected"></select>
+          </div>
+        </div>
+
+        <article id="res-converter" class="money-wrapper">resultado</article>
+      </section>
+
       <!-- <section class="cambio">
         <h2>Taxa de câmbio</h2>
         <div class="wrapper">
