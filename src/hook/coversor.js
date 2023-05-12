@@ -14,9 +14,8 @@ selected2.addEventListener('change', getApiConverter)
 getApiConverter()
 
 async function getApiConverter() {
-	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-USD,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,ARS-BRL,BRL-ARS,USD-ARS');
+	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,BRL-USD,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,ARS-BRL,BRL-ARS,USD-ARS,BRL-JPY');
 	const res = await req.json();
-
 
 	console.log(res)
 	selectMoedaC(res)
@@ -47,6 +46,8 @@ function selectMoedaC(res) {
 		htmlC(res.BRLARS)
 	}else if(isOptionText === 8) {
 		htmlC(res.ARSBRL)
+	}else if(isOptionText === 9) {
+		htmlC(res.BRLJPY)
 	}
 
 }
@@ -59,7 +60,7 @@ buttonCoverter.addEventListener('click', () => {
 	const varInput2 = input2.valueAsNumber;
 	
 	console.log(converter(varInput1, varInput2))
-	document.querySelector('#res-converter').innerText = Number(converter(varInput1, varInput2).toFixed(2))
+	document.querySelector('#res-converter').innerText = converter(varInput1, varInput2).toFixed(2);
 	
 })
 function converter(input1, input2) {
@@ -68,7 +69,7 @@ function converter(input1, input2) {
 
 
 function addOptionsConverter() {
-	const simbolos = ['Dolar Real','Real Dolar','Bitcoin Real','Dolar Iene','Bitcoin Dolar','Euro Real','Dolar Peso-Arg','Real Peso-Arg','Peso-Arg Real'];
+	const simbolos = ['Dolar Real','Real Dolar','Bitcoin Real','Dolar Iene','Bitcoin Dolar','Euro Real','Dolar Peso-Arg','Real Peso-Arg','Peso-Arg Real','Real Iene'];
 
 	simbolos.map((simbolo,index) => {createOptionsCoverter(simbolo,index)})
 }
