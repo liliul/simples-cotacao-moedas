@@ -12,21 +12,15 @@ async function getApiCotacao() {
 	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,USD-ARS,BRL-ARS');
 	const res = await req.json();
 
-	console.log(res)
-	
 	const element = res.USDBRL;	
 	html(element)
 
-	selectMoeda(res)
+	selecionarMoeda(res)
 }
 
-function selectMoeda(res) {
-	
-	const idSelect = document.getElementById('id-select');
-
+function selecionarMoeda(res) {
 	const isOption = idSelect.options[idSelect.selectedIndex];
 	const isOptionText = Number(isOption.value); 
-	// console.log(isOptionText)
 
 	if (isOptionText === 0) {
 		html(res.USDBRL)
@@ -71,8 +65,6 @@ function addOptions() {
 addOptions()
 
 function createOptions(textOption,valueOption) {
-	const idSelect = document.getElementById('id-select');
-
 	const options = document.createElement('option');
 	options.text  = textOption;
 	options.value = valueOption;
