@@ -25,6 +25,8 @@ body {
   place-content: center;
 
   color: var(--text-color);
+
+  margin: 2.5rem 0rem;
 }
 
 main {
