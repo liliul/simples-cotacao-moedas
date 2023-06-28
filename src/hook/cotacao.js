@@ -9,7 +9,7 @@ idSelect.addEventListener('change', getApiCotacao)
 getApiCotacao()
 
 async function getApiCotacao() {
-	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,USD-ARS,BRL-ARS');
+	const req = await fetch('https://economia.awesomeapi.com.br/json/last/USD-BRL,EUR-BRL,BTC-BRL,USD-JPY,BTC-USD,USD-ARS,BRL-ARS,JPY-USD,BRL-USD');
 	const res = await req.json();
 
 	const element = res.USDBRL;	
@@ -36,6 +36,10 @@ function selecionarMoeda(res) {
 		html(res.USDARS)
 	}else if(isOptionText === 6) {
 		html(res.BRLARS)
+	}else if(isOptionText === 7) {
+		html(res.JPYUSD)
+	}else if(isOptionText === 8) {
+		html(res.BRLUSD)
 	}
 }
 
@@ -58,7 +62,7 @@ function html(element) {
 }
 
 function addOptions() {
-	const simbolos = ['USDBRL','EURBRL','BTCBRL','USDJPY','BTCUSD','USDARS','BRLARS'];
+	const simbolos = ['USDBRL', 'EURBRL','BTCBRL','USDJPY','BTCUSD','USDARS','BRLARS','JPY-USD', 'BRLUSD'];
 
 	simbolos.map((simbolo,index) => {createOptions(simbolo,index)})
 }
