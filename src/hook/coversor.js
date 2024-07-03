@@ -1,4 +1,4 @@
-import { converte } from './utils.js';
+import { resultadoDaConversao } from './utils.js';
 
 // inputs para converte
 const input1 = document.getElementById('input-1');
@@ -58,18 +58,13 @@ getApiConverter()
 
 // pegando os inputs e adicionando no id res-converter
 	buttonCoverter.addEventListener('click', () => {
-		const varInput1 = input1.valueAsNumber;
-		const varInput2 = input2.valueAsNumber;
-		document.querySelector('#res-converter').innerText = converte(varInput1, varInput2).toFixed(2);
-		
+		resultadoDaConversao();
 	})
 
 // usando a tecla enter para ver o resultado do coversão das moedas
 	input1.addEventListener('keypress', (event) => {
 		if (event.key === 'Enter') {
-			const varInput1 = input1.valueAsNumber;
-			const varInput2 = input2.valueAsNumber;
-			document.querySelector('#res-converter').innerText = converte(varInput1, varInput2).toFixed(2);
+			resultadoDaConversao();
 		}
 	})
 
