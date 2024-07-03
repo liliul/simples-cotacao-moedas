@@ -60,9 +60,17 @@ getApiConverter()
 	buttonCoverter.addEventListener('click', () => {
 		const varInput1 = input1.valueAsNumber;
 		const varInput2 = input2.valueAsNumber;
-		
 		document.querySelector('#res-converter').innerText = converte(varInput1, varInput2).toFixed(2);
 		
+	})
+
+// usando a tecla enter para ver o resultado do coversão das moedas
+	input1.addEventListener('keypress', (event) => {
+		if (event.key === 'Enter') {
+			const varInput1 = input1.valueAsNumber;
+			const varInput2 = input2.valueAsNumber;
+			document.querySelector('#res-converter').innerText = converte(varInput1, varInput2).toFixed(2);
+		}
 	})
 
 // adicionando simbolos nos options
